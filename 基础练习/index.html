@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示隐藏按钮</title>
+    <style>
+        button {
+            margin: 10px;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>隐藏</button>
+    <div class="show">要隐藏的部分</div>
+    <!-- 下面是JS代码 -->
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        var part = document.getElementsByTagName("div")[0];
+        btn.onclick = function(){
+            if (this.innerHTML=="隐藏"){
+                part.className = "hide";
+                this.innerHTML = "显示";
+            }else{
+                part.className = "show";
+                this.innerHTML = "隐藏";
+            }
+        }
+    </script>
+</body>
+</html>
