@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册demo</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            margin: 1em 10%;
+        }
+
+        a {
+            color: #c60;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #image_list {
+            padding: 0;
+            list-style: none;
+        }
+
+        #image_list li {
+            float: left;
+            padding: 0px;
+            margin: 0 20px 20px 0;
+            display: inline;
+        }
+
+        #image_list li a i {
+            border: 0;
+        }
+
+        #image_container {
+            width: 450px;
+            padding: 0;
+        }
+
+        #image_container p {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>相册demo</h2>
+    <div>作者：<a href="#">victor-one</a></div>
+    <ul id="image_list">
+        <li>
+            <a href="./image/1.jpg" title="照片1">
+                <img src="./image/1-small.jpg" alt="照片1" width="100">
+            </a>
+        </li>
+        <li>
+            <a href="./image/2.jpg" title="照片2">
+                <img src="./image/2-small.jpg" alt="照片2" width="100">
+            </a>
+        </li>
+        <li>
+            <a href="./image/3.jpg" title="照片3">
+                <img src="./image/3-small.jpg" alt="照片3" width="100">
+            </a>
+        </li>
+        <li>
+            <a href="./image/4.jpg" title="照片4">
+                <img src="./image/4-small.jpg" alt="照片4" width="100">
+            </a>
+        </li>
+        
+    </ul>
+    <div style="clear:both"></div>
+    <div id="image_container">
+        <img src="./image/placeholder.png" alt="正在显示的图片" width="450px" id="image">
+        <p id="des">选择一个图片</p>
+    </div>
+    
+    <!-- 下面是JS程序 -->
+    <script>
+        // 获取事件源和相关元素
+        var ul = document.getElementById("image_list");
+        var aArr = ul.getElementsByTagName("a");
+        var img = document.getElementById("image");
+        var des = document.getElementById("des");
+        // 绑定事件
+        for (var i = 0;i < aArr.length;i++) {
+            aArr[i].onclick = function() {
+                img.src = this.href;
+                des.innerHTML = this.title;
+                // 这一步主要是防止点击图片后跳转至链接
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

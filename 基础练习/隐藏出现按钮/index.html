@@ -30,9 +30,13 @@
     <div class="show">要隐藏的部分</div>
     <!-- 下面是JS代码 -->
     <script>
+        // 获取事件源和相关元素
         var btn = document.getElementsByTagName("button")[0];
         var part = document.getElementsByTagName("div")[0];
+        // 绑定事件
         btn.onclick = function(){
+            // 书写事件驱动程序
+            // 根据btn的innerHTML上的内容来判断进行何种操作
             if (this.innerHTML=="隐藏"){
                 part.className = "hide";
                 this.innerHTML = "显示";
