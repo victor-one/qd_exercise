@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码放大</title>
+    <!-- 本章素材来自博主“千古壹号”，请扫描本练习二维码关注其公众号学习前端知识 -->
+    <style>
+        .code {
+            width: 50px;
+            height: 50px;
+        }
+
+        .code a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background: url(http://img.smyhvae.com/20180127_QRcode_small.png) no-repeat -220px -50px;
+            position: relative;
+        }
+
+        .code_big {
+            top: 10px;
+            left: 80px;
+            position: absolute;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+    <script>
+        // 当脚本放在头部时，要使用window.onload
+        window.onload = function () {
+            // 获取事件源和相关元素
+            var a = document.getElementsByTagName("a")[0];
+            var code_big = document.getElementsByClassName("code_big")[0];
+            // 绑定事件
+            a.onmouseover = fn1;
+            a.onmouseout = fn2;
+
+            // 放到小二维码上后显示放大的二维码
+            function fn1() {
+                code_big.className = "code_big show";
+            }
+
+            // 离开小二维码后放大的二维码消失
+            function fn2() {
+                code_big.className = "code_big hide";
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="code">
+        <a href="#"></a>
+        <img src="http://img.smyhvae.com/2016040102.jpg" alt="" class="code_big hide">
+    </div>
+</body>
+</html>
