@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选和反选</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .my-table {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+
+        th,td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+
+        thead input {
+            position: relative;
+            left: -15px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var topInp = document.getElementById("title");
+            var tbody = document.getElementById("content");
+            var bodInpArr = tbody.getElementsByTagName("input");
+            // 实现全选和全不选
+            topInp.onclick = function() {
+                for (var i = 0;i < bodInpArr.length;i++) {
+                    bodInpArr[i].checked = topInp.checked;
+                }
+            }
+            // 下面全选则上面选中，下面有一个不选中则上面不选
+            for (var i = 0;i < bodInpArr.length;i++) {
+                bodInpArr[i].onclick = function() {
+                    var bool = true;
+                    for (var j = 0;j < bodInpArr.length;j++) {
+                        if (bodInpArr[j].checked == false) {
+                            bool == false;
+                        }
+                    }
+                    topInp.checked == bool;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="my-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="title">
+                    </th>
+                    <th>类别</th>
+                    <th>菜名</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>菜品1</td>
+                    <td>鸡公煲</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>菜品2</td>
+                    <td>小火锅</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>菜品3</td>
+                    <td>酸辣粉</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>菜品4</td>
+                    <td>炸鸡</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
