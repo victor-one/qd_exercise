@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标悬停变色</title>
+    <style>
+        button {
+            margin: 10px;
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script>
+        var btnArr = document.getElementsByTagName("button");
+
+        // 利用排他思想，在鼠标置入时变色
+        for (var i = 0;i < btnArr.length;i++) {
+            btnArr[i].onmouseover = function() {
+                for (var j = 0;j < btnArr.length;j++) {
+                    btnArr[j].className = "";
+                }
+                this.className = "current";
+            }
+        }
+        // 鼠标离开时恢复
+        for (var i = 0;i < btnArr.length;i++) {
+            btnArr[i].onmouseout = function() {
+                this.className = "";
+            }
+        }        
+    </script>
+</body>
+</html>
