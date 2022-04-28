@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度搜索框效果</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 500px;
+            margin: 200px auto;
+        }
+
+        ul {
+            width: 392px;
+            padding: 5px;
+            list-style: none;
+            border: 1px solid red;
+        }
+
+        li:hover {
+            background-color: red;
+        }
+
+        input {
+            width: 400px;
+        }
+
+        button {
+            width: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text">
+        <button>搜索</button>
+        <!-- <ul>
+            <li>aaa</li>
+            <li>aaa</li>
+            <li>aaa</li>
+        </ul> -->
+    </div>
+    <script>
+        //需求：输入内容(输入事件，键盘弹起事件)，模拟服务器获取内容，创建ul，并在其中显示。
+        //1.获取事件源
+        //模拟服务器获取内容
+        var arr = ["a", "ab", "abc", "abcd", "aa", "aaa"];
+        var box = document.getElementsByClassName("box")[0];
+        var inp = box.getElementsByTagName("input")[0];
+
+        //2.绑定事件(输入内容(输入事件，键盘弹起事件))
+        inp.onkeyup = function () {
+            var newArr = [];
+            for (var i = 0;i < arr.length;i++) {
+                if (arr[i].indexOf(this.value) === 0) {
+                    newArr.push("<li>" + arr[i] + "</li>");
+                }
+            }
+            // 如果原来存在ul，清除原来的ul
+            if (document.getElementsByTagName("ul")[0]) {
+                box.removeChild(box.getElementsByTagName("ul")[0]);
+            }
+            // 判断是否无输入或是否没有对应字符串，注意：不可以用newArr === []进行判断
+            if (this.value.length === 0 || newArr.length === 0) {
+                return;
+            }
+            var str = newArr.join("");
+            var ul = document.createElement("ul");
+            ul.innerHTML = str;
+            box.appendChild(ul);
+
+            // 点击下方弹出内容自动填充
+            var liArr = document.getElementsByTagName("li");
+            for (var i = 0;i < liArr.length;i++) {
+                liArr[i].onclick = function() {
+                    inp.value = this.innerHTML;
+                    box.removeChild(box.getElementsByTagName("ul")[0]);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

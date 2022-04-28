@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write方式</title>
+</head>
+<body>
+    <!-- <ul>
+        victor-one
+    </ul> -->
+    <script>
+        document.write("<ul><li>我是document.write创建的li</li></ul>");
+        var ul = document.getElementsByTagName("ul")[0];
+        ul.innerHTML += "<li>我是innerHTML创建的li</li>";
+    </script>
+</body>
+</html>

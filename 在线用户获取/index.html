@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线用户获取demo</title>
+    <style>
+        * {
+            word-wrap: break-word;
+        }
+
+        .app {
+            width: 730px;
+            margin: 0px auto;
+            margin-top: 5px !important;
+        }
+
+        .header {
+            background-color: #a90000;
+            height: 32px;
+            
+        }
+
+        .header span {
+            padding: 0 10px;
+            line-height: 32px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .content {
+            border: 10px 10px 0;
+        }
+
+        ul {
+            display: block;
+            list-style: none;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            -webkit-padding-start: 25px;
+        }
+
+        .center li {
+            float: left;
+            text-align: center;
+            overflow: hidden;
+            padding: 0 0 5px;
+            width: 66px;
+            height: 85px;
+        }
+
+        .center li a {
+            color: #333;
+            text-decoration: none;
+            font: 12px/1.5 Tahoma, 'Mircosoft Yahei', 'Simsun';
+        }
+
+        .center li img {
+            display: block;
+            margin: 0 auto;
+            width: 48px;
+            height: 48px;
+            border: none;
+        }
+
+        .center li p {
+            display: block;
+            width: 100%;
+            height: 20px;
+            margin: 0px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="header"><span>当前在线用户</span></div>
+        <div class="content">
+            <div class="center">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+         //模拟从服务器获取数据
+        var users = [
+            {"name": "smyhvae", "icon": "images/noavatar_small.gif"},
+            {"name": "smyh", "icon": "images/noavatar_small.gif"},
+            {"name": "smyh02", "icon": "images/75_avatar_small.jpg"},
+            {"name": "vae", "icon": "images/89_avatar_small.jpg"},
+            {"name": "today", "icon": "images/noavatar_small.gif"},
+            {"name": "enen", "icon": "images/noavatar_small.gif"},
+            {"name": "oyey", "icon": "images/noavatar_small.gif"},
+            {"name": "dongxiaojie", "icon": "images/noavatar_small.gif"},
+            {"name": "qishi", "icon": "images/noavatar_small.gif"},
+            {"name": "qqtang", "icon": "images/noavatar_small.gif"},
+            {"name": "wawawa", "icon": "images/noavatar_small.gif"},
+            {"name": "haha", "icon": "images/noavatar_small.gif"},
+            {"name": "robot", "icon": "images/noavatar_small.gif"},
+            {"name": "heheda", "icon": "images/noavatar_small.gif"},
+            {"name": "smyhvae1", "icon": "images/noavatar_small.gif"},
+            {"name": "lihaile", "icon": "images/noavatar_small.gif"}
+        ];
+
+        //需求：页面显示所有的在线用户。
+        //思路：模拟服务器获取数据（数组中装着json）.获取ul，把ul的innerHTML属性获取到，然后不间断的往innerHTML属性中赋值。
+        //赋值要求：li标签的内容。
+        var ul = document.getElementsByTagName("ul")[0];
+        for (var i = 0;i < users.length;i++) {
+            ul.innerHTML += '<li>' +
+            '<a href="#" target="blank"><img src="' + users[i].icon + '" width="48" height="48" alt="' + users[i].name + '"></a>' +
+            '<p><a href="#" title="' + users[i].name + '" target="_blank">' + users[i].name + '</a></p>' +
+            '</li>';
+        }
+    </script>
+</body>
+</html>
